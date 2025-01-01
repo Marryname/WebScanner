@@ -14,16 +14,16 @@ func TestScanner(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name:    "测试HTTP服务",
-			target:  "localhost",
+			name:    "测试有效目标",
+			target:  "example.com",
 			timeout: 5 * time.Second,
 			wantErr: false,
 		},
 		{
-			name:    "测试HTTPS服务",
-			target:  "example.com",
+			name:    "测试无效目标",
+			target:  "invalid.domain.test",
 			timeout: 5 * time.Second,
-			wantErr: false,
+			wantErr: true,
 		},
 	}
 
@@ -37,10 +37,47 @@ func TestScanner(t *testing.T) {
 				return
 			}
 
-			if len(results) > 0 {
-				for _, result := range results {
-					t.Logf("识别到服务: %s (端口: %d)", result.ServiceName, result.Port)
-				}
+			if !tt.wantErr && len(results) == 0 {
+				t.Error("Scan() returned no results for valid target")
+			}
+		})
+	}
+}
+
+func TestDatabase(t *testing.T) {
+	db := NewDatabase()
+
+	tests := []struct {
+		name    string
+		port    int
+		banner  string
+		want    string
+		wantVer string
+	}{
+		{
+			name:    "HTTP服务识别",
+			port:    80,
+			banner:  "Apache/2.4.41 (Ubuntu)",
+			want:    "HTTP",
+			wantVer: "2.4.41",
+		},
+		{
+			name:    "SSH服务识别",
+			port:    22,
+			banner:  "OpenSSH_8.2p1 Ubuntu-4ubuntu0.2",
+			want:    "SSH",
+			wantVer: "8.2p1",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := db.IdentifyService(tt.port, tt.banner); got != tt.want {
+				t.Errorf("IdentifyService() = %v, want %v", got, tt.want)
+			}
+
+			if got := db.IdentifyVersion(tt.banner); got != tt.wantVer {
+				t.Errorf("IdentifyVersion() = %v, want %v", got, tt.wantVer)
 			}
 		})
 	}
