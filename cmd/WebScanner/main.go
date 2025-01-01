@@ -10,10 +10,6 @@ import (
 )
 
 var (
-	// 版本信息
-	Version   string
-	BuildTime string
-
 	// 全局配置
 	cfgFile     string
 	logLevel    string
@@ -26,9 +22,9 @@ var (
 
 // rootCmd 表示基本命令
 var rootCmd = &cobra.Command{
-	Use:   "gosecscanner",
+	Use:   "webscan",
 	Short: "一个综合性的网络安全扫描工具",
-	Long: `GoSecScanner 是一个功能完整的网络安全扫描工具，提供以下功能：
+	Long: `WebScanner 是一个功能完整的网络安全扫描工具，提供以下功能：
   - 端口扫描
   - 子域名发现
   - CDN识别
@@ -62,8 +58,8 @@ func initConfig() {
 	} else {
 		// 搜索配置文件的默认位置
 		viper.AddConfigPath(".")
-		viper.AddConfigPath("$HOME/.gosecscanner")
-		viper.AddConfigPath("/etc/gosecscanner")
+		viper.AddConfigPath("$HOME/.webscan")
+		viper.AddConfigPath("/etc/webscan")
 		viper.SetConfigName("config")
 	}
 

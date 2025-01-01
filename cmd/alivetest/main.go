@@ -38,6 +38,6 @@ func main() {
 	fmt.Printf("存活状态: %v\n", result.IsAlive)
 	if result.IsAlive {
 		fmt.Printf("成功的探测方法: %v\n", result.Methods)
-		fmt.Printf("响应时间: %v\n", result.ResponseTime)
+		// fmt.Printf("响应时间: %v\n", result.ResponseTime)
 	}
 }
