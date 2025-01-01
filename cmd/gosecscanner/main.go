@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/Marryname/WebScanner/pkg/logger"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/yourusername/gosecscanner/pkg/logger"
 )
 
 var (

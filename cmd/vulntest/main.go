@@ -9,7 +9,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/yourusername/gosecscanner/internal/vulnscan"
+	"github.com/Marryname/WebScanner/internal/vulnscan"
+	"github.com/Marryname/WebScanner/pkg/logger"
 )
 
 func main() {
@@ -25,9 +26,17 @@ func main() {
 		log.Fatal("请指定扫描目标")
 	}
 
+	log, err := logger.NewLogger(logger.INFO, "", true)
+	if err != nil {
+		fmt.Printf("初始化日志记录器失败: %v\n", err)
+		return
+	}
+	defer log.Close()
+
 	// 创建报告目录
 	if err := os.MkdirAll(*reportDir, 0755); err != nil {
-		log.Fatalf("创建报告目录失败: %v", err)
+		log.Error("创建报告目录失败: %v", err)
+		return
 	}
 
 	fmt.Printf("\n[+] 开始对目标 %s 进行漏洞扫描...\n", *target)
@@ -37,7 +46,8 @@ func main() {
 
 	// 加载漏洞模板
 	if err := scanner.LoadTemplates(*templateDir); err != nil {
-		log.Fatalf("加载漏洞模板失败: %v", err)
+		log.Error("加载漏洞模板失败: %v", err)
+		return
 	}
 
 	startTime := time.Now()

@@ -6,12 +6,12 @@ import (
 	"time"
 
 	"github.com/Marryname/WebScanner/internal/alive"
+	"github.com/Marryname/WebScanner/internal/cdn"
+	"github.com/Marryname/WebScanner/internal/fingerprint"
+	"github.com/Marryname/WebScanner/internal/portscan"
+	"github.com/Marryname/WebScanner/internal/subdomain"
+	"github.com/Marryname/WebScanner/internal/vulnscan"
 	"github.com/spf13/cobra"
-	"github.com/yourusername/gosecscanner/internal/cdn"
-	"github.com/yourusername/gosecscanner/internal/fingerprint"
-	"github.com/yourusername/gosecscanner/internal/portscan"
-	"github.com/yourusername/gosecscanner/internal/subdomain"
-	"github.com/yourusername/gosecscanner/internal/vulnscan"
 )
 
 var (

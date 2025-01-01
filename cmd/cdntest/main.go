@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/yourusername/gosecscanner/internal/cdn"
+	"github.com/Marryname/WebScanner/internal/cdn"
 )
 
 func main() {
