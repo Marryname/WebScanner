@@ -1,0 +1,36 @@
+{
+  "target": "test.com",
+  "start_time": "2025-01-01T10:11:51.5310801+08:00",
+  "end_time": "2025-01-01T10:11:51.5310801+08:00",
+  "duration": 0,
+  "total_vulns": 2,
+  "results": [
+    {
+      "Target": "",
+      "VulnID": "test-001",
+      "Name": "测试漏洞1",
+      "Severity": "high",
+      "Description": "这是一个测试漏洞",
+      "Solution": "升级到最新版本",
+      "Details": null,
+      "Timestamp": "2025-01-01T10:11:51.5310801+08:00"
+    },
+    {
+      "Target": "",
+      "VulnID": "test-002",
+      "Name": "测试漏洞2",
+      "Severity": "medium",
+      "Description": "另一个测试漏洞",
+      "Solution": "修改配置",
+      "Details": null,
+      "Timestamp": "2025-01-01T10:11:51.5310801+08:00"
+    }
+  ],
+  "summary": {
+    "critical": 0,
+    "high": 1,
+    "medium": 1,
+    "low": 0,
+    "info": 0
+  }
+}

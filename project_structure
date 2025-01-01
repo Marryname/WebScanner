@@ -1,0 +1,70 @@
+gosecscanner/
+├── cmd/                              # 命令行工具
+│   ├── gosecscanner/                 # 主程序
+│   │   └── main.go
+│   ├── test/                         # 基础测试工具
+│   │   └── main.go
+│   ├── cdntest/                      # CDN检测测试工具
+│   │   └── main.go
+│   ├── alivetest/                    # 存活探测测试工具
+│   │   └── main.go
+│   ├── fptest/                       # 服务识别测试工具
+│   │   └── main.go
+│   └── vulntest/                     # 漏洞扫描测试工具
+│       └── main.go
+├── internal/                         # 内部包
+│   ├── portscan/                     # 端口扫描模块
+│   │   ├── scanner.go
+│   │   └── scanner_test.go
+│   ├── subdomain/                    # 子域名发现模块
+│   │   ├── finder.go
+│   │   └── finder_test.go
+│   ├── cdn/                          # CDN识别模块
+│   │   ├── detector.go
+│   │   └── detector_test.go
+│   ├── alive/                        # 存活探测模块
+│   │   ├── detector.go
+│   │   └── detector_test.go
+│   ├── fingerprint/                  # 服务识别模块
+│   │   ├── scanner.go
+│   │   ├── scanner_test.go
+│   │   ├── database.go
+│   │   └── signatures/               # 服务指纹库
+│   │       └── signatures.json
+│   └── vulnscan/                     # 漏洞扫描模块
+│       ├── scanner.go
+│       ├── scanner_test.go
+│       ├── template.go
+│       ├── report.go
+│       └── templates/                # 漏洞模板库
+│           └── web/
+│               ├── cve/
+│               └── owasp/
+├── pkg/                              # 公共包
+│   ├── common/                       # 通用功能
+│   │   ├── types.go
+│   │   └── utils.go
+│   ├── logger/                       # 日志模块
+│   │   └── logger.go
+│   └── utils/                        # 工具函数
+│       ├── network.go
+│       └── concurrency.go
+├── configs/                          # 配置文件
+│   ├── config.yaml                   # 主配置文件
+│   ├── signatures/                   # 服务指纹配置
+│   └── templates/                    # 漏洞模板配置
+├── scripts/                          # 脚本文件
+│   ├── build.sh
+│   └── test.sh
+├── reports/                          # 扫描报告存储
+│   ├── json/
+│   └── html/
+├── docs/                             # 文档
+│   ├── api/
+│   └── guides/
+├── test/                             # 测试资源
+│   └── testdata/
+├── go.mod
+├── go.sum
+├── README.md
+└── LICENSE 

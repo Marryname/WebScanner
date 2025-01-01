@@ -1,0 +1,27 @@
+# 二进制文件
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# 测试二进制文件
+*.test
+
+# 输出文件夹
+/build/
+/bin/
+/reports/
+
+# 日志文件
+*.log
+
+# IDE 相关
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db 
